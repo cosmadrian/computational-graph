@@ -55,9 +55,7 @@ class Node(Thread):
             self.received_input.set()
 
     def work(self):
-        print('waiting for release')
         for _ in range(len(self.parents)): self.parents_done.acquire()
-        print('released')
 
         self.received_input.wait()
         self.received_input.clear()
